@@ -1,10 +1,13 @@
 using UnityEngine;
+
+
+
+
 namespace SingleResponsibility
 {
+    [RequireComponent(typeof(PlayerAudio), typeof(PlayerInput),typeof(PlayerMovement))]
     public class Player : MonoBehaviour
     {
-        [RequireComponent(typeof(PlayerAudio), typeof(PlayerInput), typeof(PlayerMovement)]
-
         [SerializeField] private PlayerAudio playerAudio;
         [SerializeField] private PlayerInput playerInput;
         [SerializeField] private PlayerMovement playerMovement;
