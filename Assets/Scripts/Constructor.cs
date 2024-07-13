@@ -1,31 +1,41 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
-
-class Car2
+public class Animal
 {
-    private string Car2_model = "Shelby";
-}
-class Car
-{
-    public string model;
-    public string color;
-    public int year;
-    Car(string model,int year,string color) {
-        model = model;
-        color = color;
-        year = year;
-
-    }
-
-    static void Main(string[] args)
+    public virtual void AnimalSound()
     {
-        Car carObj = new Car("Ford",5,"Red");
-
-        Console.WriteLine(carObj.model);
+        Console.WriteLine("nunu");
     }
+}
 
+public class Dog : Animal
+{
+    public override void AnimalSound()
+    {
+        Console.WriteLine("Bark");
+    }
+}
 
+public class Cat : Animal
+{
+    public override void AnimalSound()
+    {
+        Console.WriteLine("Meow");
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Cat catObj = new Cat();
+        Dog dogObj = new Dog();
+
+        catObj.AnimalSound();
+        dogObj.AnimalSound();
+    }
 }
