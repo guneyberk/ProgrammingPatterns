@@ -4,38 +4,44 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class Animal
+abstract class Animal
 {
-    public virtual void AnimalSound()
-    {
-        Console.WriteLine("nunu");
-    }
+    public abstract void AnimalSound();
 }
 
-public class Dog : Animal
+class Pig : Animal
 {
     public override void AnimalSound()
     {
-        Console.WriteLine("Bark");
+        Console.WriteLine("Pig");
     }
 }
 
-public class Cat : Animal
+class Cat: Animal
 {
     public override void AnimalSound()
     {
-        Console.WriteLine("Meow");
+        Console.WriteLine("Cat");
     }
 }
 
-public class Program
+class Program
 {
+
     public static void Main()
     {
         Cat catObj = new Cat();
-        Dog dogObj = new Dog();
+        Pig pigObj = new Pig();
 
         catObj.AnimalSound();
-        dogObj.AnimalSound();
+        pigObj.AnimalSound();
+
     }
+
+
+    
+
+
 }
+
+
