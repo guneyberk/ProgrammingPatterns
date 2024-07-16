@@ -43,10 +43,48 @@ public class IdleState: IState
 
 public class WalkState : IState
 {
+    private PlayerControllerState _state;
+    public WalkState(PlayerControllerState playerControllerState)
+    {
+        this._state = playerControllerState;
+    }
 
+    public void Enter()
+    {
+        //code that runs when we first enter the state
+    }
+
+    public void Update()
+    {
+        //Here we add logic to detec if the conditions exits to transition to another state
+    }
+
+    public void Exit()
+    {
+        //code that runs when we exit the state
+    }
 }
 
 public class JumpState : IState
 {
+    private PlayerControllerState _state;
+    public JumpState(PlayerControllerState playerControllerState)
+    {
+        this._state = playerControllerState;
+    }
 
+    public void Enter()
+    {
+        //code that runs when we first enter the state
+    }
+
+    public void Update()
+    {
+        //Here we add logic to detec if the conditions exits to transition to another state
+    }
+
+    public void Exit()
+    {
+        //code that runs when we exit the state
+    }
 }
