@@ -1,47 +1,51 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
-using UnityEngine;
 
-abstract class Animal
+public interface IShape
 {
-    public abstract void AnimalSound();
+    float CalculateArea();
 }
 
-class Pig : Animal
+public class Circle : IShape
 {
-    public override void AnimalSound()
+    public float Radius { get; set; }
+
+    public Circle(float radius)
     {
-        Console.WriteLine("Pig");
+        Radius = radius;
+    }
+
+    public float CalculateArea()
+    {
+        return (float)(Math.PI * Radius * Radius);
     }
 }
 
-class Cat: Animal
+public class Rectangle : IShape
 {
-    public override void AnimalSound()
+    public float Width { get; set; }
+    public float Height { get; set; }
+
+    public Rectangle(float width, float height)
     {
-        Console.WriteLine("Cat");
+        Width = width;
+        Height = height;
+    }
+
+    public float CalculateArea()
+    {
+        return Width * Height;
     }
 }
 
-class Program
+public class Program
 {
-
-    public static void Main()
+    public static void Main(string[] args)
     {
-        Cat catObj = new Cat();
-        Pig pigObj = new Pig();
-
-        catObj.AnimalSound();
-        pigObj.AnimalSound();
-
+        IShape circle = new Circle(10);
+        IShape rectangle = new Rectangle(4, 6);
     }
-
-
-    
-
-
 }
+
+
 
 
