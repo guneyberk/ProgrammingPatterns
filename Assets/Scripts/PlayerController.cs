@@ -1,8 +1,25 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+public class ReportMousePosition
+{
+     public void GetMousePos()
+    {
+        Debug.Log("asads");
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
 
+        if (Keyboard.current.anyKey.wasPressedThisFrame)
+        {
+            Debug.Log("A key was pressed");
+        }
 
+        if (Gamepad.current.aButton.wasPressedThisFrame)
+        {
+            Debug.Log("A button was pressed");
+        }
+    }
+}
 public interface IJoystick
 {
     public void JoystickOverride();
@@ -52,6 +69,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FixedJoystick _movementJoystick;
     [SerializeField] private FixedJoystick _aimJoystick;
     [SerializeField] private float _moveSpeed;
+    ReportMousePosition mousePos;
 
 
     MovementJoystick movementObj;
@@ -59,12 +77,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        mousePos = new ReportMousePosition();
         aimObj = new AimJoystick(_rigidbody);
         movementObj = new MovementJoystick(_rigidbody, _movementJoystick, _moveSpeed);
     }
 
     private void FixedUpdate()
     {
+        mousePos.GetMousePos();
         movementObj.JoystickOverride();
         if (_aimJoystick.Horizontal != 0 || _aimJoystick.Vertical != 0)
         {
