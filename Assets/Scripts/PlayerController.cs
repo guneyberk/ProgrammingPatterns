@@ -1,24 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ReportMousePosition
 {
-     public void GetMousePos()
-    {
-        Debug.Log("asads");
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
 
-        if (Keyboard.current.anyKey.wasPressedThisFrame)
-        {
-            Debug.Log("A key was pressed");
-        }
-
-        if (Gamepad.current.aButton.wasPressedThisFrame)
-        {
-            Debug.Log("A button was pressed");
-        }
-    }
 }
 public interface IJoystick
 {
@@ -63,7 +48,7 @@ public class AimJoystick : IAimJoystick
     }
 }
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
-public class PlayerController : MonoBehaviour
+public class Player: MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private FixedJoystick _movementJoystick;
@@ -84,13 +69,29 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        mousePos.GetMousePos();
+        //GetMousePos();
         movementObj.JoystickOverride();
         if (_aimJoystick.Horizontal != 0 || _aimJoystick.Vertical != 0)
         {
             transform.rotation = aimObj.LookRotation();
         }
     }
+
+    //public void GetMousePos()
+    //{
+    //    Debug.Log("asads");
+    //    Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+    //    if (Keyboard.current.anyKey.wasPressedThisFrame)
+    //    {
+    //        Debug.Log("A key was pressed");
+    //    }
+
+    //    if (Gamepad.current.aButton.wasPressedThisFrame)
+    //    {
+    //        Debug.Log("A button was pressed");
+    //    }
+    //}
 
 
 }
